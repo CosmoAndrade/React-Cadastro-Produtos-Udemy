@@ -1,11 +1,16 @@
 import Navbar from "./components/Navbar";
+import Home from "./views/Home";
 
 
 function App() {
   return (
-    <div>
-      <Navbar/>
-    </div>
+    <>
+      <div className="container">
+        <Navbar/>
+        <Home/>
+      </div>
+     
+    </>
   );
 }
 
