@@ -1,13 +1,12 @@
 import Navbar from "./components/Navbar";
-import Home from "./views/Home";
-
+import Rotas from "./rotas";
 
 function App() {
   return (
     <>
       <div className="container">
         <Navbar/>
-        <Home/>
+        <Rotas/>
       </div>
      
     </>
