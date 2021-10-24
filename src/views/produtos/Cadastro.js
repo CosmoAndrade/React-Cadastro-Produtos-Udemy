@@ -23,6 +23,16 @@ class CadastroProdutos extends React.Component{
             
         }
 
+        limpaCampos = ()=> {
+            this.setState ({
+            nome:'',
+            sku:'',
+            descricao:'',
+            preco:0,
+            fornecedor:''
+            })
+        }
+
     render(){
         return(
             <>
@@ -111,7 +121,7 @@ class CadastroProdutos extends React.Component{
                         </div>
 
                         <div className="col-md-1">
-                            <button className="btn btn-primary"> Limpar</button>
+                            <button onClick={this.limpaCampos} className="btn btn-primary"> Limpar</button>
                         </div>
                         
                     </div> 
