@@ -10,7 +10,8 @@ class CadastroProdutos extends React.Component{
             descricao:'',
             preco:0,
             fornecedor:'',
-            sucesso: false
+            sucesso: false,
+            errors:[]
         }
 
         constructor (){
@@ -33,9 +34,16 @@ class CadastroProdutos extends React.Component{
                 preco: this.state.preco,
                 fornecedor:this.state.fornecedor
             }
-            this.service.salvar(produto)
-            this.limpaCampos()
-            this.setState({sucesso: true})
+                try{
+                    this.service.salvar(produto)
+                    this.limpaCampos()
+                    this.setState({sucesso: true})
+                } catch(erro){
+                   const errors =  erro.errors
+                   this.setState({errors: errors})
+                }
+
+           
         }
             
         
@@ -69,7 +77,21 @@ class CadastroProdutos extends React.Component{
                         
                     }
 
-           
+                        {
+                         this.state.errors.length > 0 &&
+
+                            this.state.errors.map(msg => {
+                                return (
+                                    <div className="alert alert-dismissible alert-danger">
+                                    <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
+                                    <strong>Erro!</strong> {msg}.
+                                    </div>
+                                )
+                            })
+    
+                        
+                    }
+
 
                     <div className="row">
                         <div className="col-md-6">
