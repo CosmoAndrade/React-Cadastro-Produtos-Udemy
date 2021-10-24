@@ -1,13 +1,21 @@
 import Navbar from "./components/Navbar";
 import Rotas from "./rotas";
+import {HashRouter} from 'react-router-dom'
+
 
 function App() {
   return (
     <>
-      <div className="container">
+
+    <HashRouter>
+
+    <div className="container">
         <Navbar/>
         <Rotas/>
       </div>
+      
+    </HashRouter>
+      
      
     </>
   );
