@@ -4,6 +4,9 @@ export function ErroValidacao (errors){
     this.errors = errors;
 }
 
+
+
+
 export default class ProdutoService {
 
     validar = (produto) => {
@@ -29,6 +32,11 @@ export default class ProdutoService {
         if (errors.length > 0){
             throw new ErroValidacao(errors)
         }
+    }
+
+    obterProdutos = () => {
+        const produtos = localStorage.getItem(PRODUTOS)
+        return JSON.parse(produtos)
     }
 
     salvar = (produto) => {

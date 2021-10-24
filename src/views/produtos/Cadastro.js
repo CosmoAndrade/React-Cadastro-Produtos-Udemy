@@ -32,7 +32,7 @@ class CadastroProdutos extends React.Component{
                 sku: this.state.sku,
                 descricao: this.state.descricao,
                 preco: this.state.preco,
-                fornecedor:this.state.fornecedor
+                fornecedor:this.state.fornecedor,
             }
                 try{
                     this.service.salvar(produto)
@@ -54,7 +54,7 @@ class CadastroProdutos extends React.Component{
             sku:'',
             descricao:'',
             preco:0,
-            fornecedor:''
+            fornecedor:'',
             })
         }
 
