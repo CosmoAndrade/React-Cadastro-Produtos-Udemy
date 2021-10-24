@@ -1,4 +1,5 @@
 import React from "react";
+import ProdutoService from "../../app/produtoService";
 
 
 class CadastroProdutos extends React.Component{
@@ -11,6 +12,11 @@ class CadastroProdutos extends React.Component{
             fornecedor:''
         }
 
+        constructor (){
+            super()
+            this.service = new ProdutoService()
+        }
+
         onChange = (event)=>{
           const valor =   event.target.value
           const nomeDoCampo = event.target.name
@@ -19,9 +25,19 @@ class CadastroProdutos extends React.Component{
 
         onSubmit = (event)=>{
 
-            console.log(this.state)
-            
+            const produto = {
+                nome: this.state.nome,
+                sku: this.state.sku,
+                descricao: this.state.descricao,
+                preco: this.state.preco,
+                fornecedor:this.state.fornecedor
+            }
+            this.service.salvar(produto)
+            this.limpaCampos()
+            console.log('Salvo com sucesso')
         }
+            
+        
 
         limpaCampos = ()=> {
             this.setState ({
@@ -35,7 +51,7 @@ class CadastroProdutos extends React.Component{
 
     render(){
         return(
-            <>
+            
 
             <div className="Card">
                 <div className="card-header">
@@ -129,7 +145,7 @@ class CadastroProdutos extends React.Component{
                 </div>
             </div>
 
-            </>
+        
         );
     }
 }
