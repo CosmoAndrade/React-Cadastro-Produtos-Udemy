@@ -24,9 +24,9 @@ export default class ProdutoService {
             errors.push('O campo Preço é deve ter um valor maaior que 0!')
         }
 
-        if(!produto.formecedor){
-            errors.push('O campo Fornecedor é obrigatório!')
-        }
+        // if(!produto.formecedor){
+        //     errors.push('O campo Fornecedor é obrigatório!')
+        // }
 
 
         if (errors.length > 0){

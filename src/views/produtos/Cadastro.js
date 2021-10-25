@@ -1,5 +1,7 @@
 import React from "react";
+
 import ProdutoService from "../../app/produtoService";
+
 
 
 class CadastroProdutos extends React.Component{
@@ -54,8 +56,8 @@ class CadastroProdutos extends React.Component{
             sku:'',
             descricao:'',
             preco:0,
-            fornecedor:'',
-            })
+            fornecedor:''
+            });
         }
 
     render(){
@@ -72,7 +74,7 @@ class CadastroProdutos extends React.Component{
                         this.state.sucesso &&
                             <div className="alert alert-dismissible alert-success">
                             <button type="button" className="btn-close" data-bs-dismiss="alert"></button>
-                            <strong>Bem feito!</strong> Cadastro Realizado com secesso .
+                            <strong>Bem feito!</strong> Cadastro Realizado com sucesso .
                          </div>
                         
                     }
