@@ -1,7 +1,8 @@
 import React from "react";
 
 import ProdutoService from "../../app/produtoService";
-
+import {withRouter} from 'react-router-dom'
+ 
 
 
 class CadastroProdutos extends React.Component{
@@ -58,6 +59,18 @@ class CadastroProdutos extends React.Component{
             preco:0,
             fornecedor:''
             });
+        }
+
+        componentDidMount(){
+          const sku =  this.props.match.params.sku
+
+          if (sku){
+            const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku)
+            if (resultado.length === 1){
+              const produtoEncontrado = resultado[0]
+               this.setState({...produtoEncontrado})
+            }
+          }
         }
 
     render(){
@@ -188,4 +201,4 @@ class CadastroProdutos extends React.Component{
 
 
 
-export default  CadastroProdutos;
+export default  withRouter (CadastroProdutos);
