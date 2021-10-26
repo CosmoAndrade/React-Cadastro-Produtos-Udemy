@@ -14,7 +14,8 @@ class CadastroProdutos extends React.Component{
             preco:0,
             fornecedor:'',
             sucesso: false,
-            errors:[]
+            errors:[],
+            atualizando: false
         }
 
         constructor (){
@@ -68,7 +69,7 @@ class CadastroProdutos extends React.Component{
             const resultado = this.service.obterProdutos().filter(produto => produto.sku === sku)
             if (resultado.length === 1){
               const produtoEncontrado = resultado[0]
-               this.setState({...produtoEncontrado})
+               this.setState({...produtoEncontrado , atualizando: true})
             }
           }
         }
@@ -79,7 +80,8 @@ class CadastroProdutos extends React.Component{
 
             <div className="Card">
                 <div className="card-header">
-                    Cadastro de Produtos
+                   {this.state.atualizando  ? 'Atualização ' : 'Cadastro '}
+                   de Produto
                 </div>
                 <div className="card-body">
 
@@ -127,6 +129,7 @@ class CadastroProdutos extends React.Component{
                                 <label htmlFor=""> SKU: *</label>
                                 <input type="text"
                                  name="sku"
+                                 disabled={this.state.atualizando}
                                  onChange = {this.onChange}
                                 value={this.state.sku}  
                                 className="form-control" />
@@ -182,7 +185,9 @@ class CadastroProdutos extends React.Component{
                     <div className="row mt-3">
 
                         <div className="col-md-1 mx-3">
-                            <button onClick={this.onSubmit} className="btn btn-success"> Salvar</button>
+                            <button onClick={this.onSubmit} className="btn btn-success"> 
+                            {this.state.atualizando ? 'Atualizar ' : 'Salvar '}
+                            </button>
                         </div>
 
                         <div className="col-md-1">
